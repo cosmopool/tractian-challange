@@ -23,10 +23,3 @@ class Repository {
     return companies;
   }
 }
-
-// class RepositoryError implements Exception {
-//   RepositoryError(this.error, this.message);
-//
-//   final Object error;
-//   final String message;
-// }
