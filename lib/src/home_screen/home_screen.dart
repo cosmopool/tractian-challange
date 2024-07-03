@@ -34,7 +34,9 @@ class _HomeScreenState extends State<HomeScreen> {
     if (controller.isLoading.value) {
       return const Center(child: CircularProgressIndicator());
     }
-    if (controller.companies.isEmpty) return const Text('No Companies found');
+    if (controller.companies.isEmpty) {
+      return const Center(child: Text('Nothing to show'));
+    }
 
     return ListView.builder(
       itemCount: controller.companies.length,
