@@ -62,34 +62,62 @@ class _AssetsScreenState extends State<AssetsScreen> {
       return const Center(child: Text('Nothing to show'));
     }
 
+    final colors = Theme.of(context).colorScheme;
     return SingleChildScrollView(
       child: Column(
-        children: _buildTreeViewNodes(company.children),
+        children: _buildTreeViewNodes(company.children, colors),
       ),
     );
   }
 
-  List<Widget> _buildTreeViewNodes(Set<TreeNode> nodes) {
+  List<Widget> _buildTreeViewNodes(Set<TreeNode> nodes, ColorScheme colors) {
+    const style = TextStyle(fontSize: 14);
+
     return nodes.map((node) {
       if (node is Component) {
+        Widget trailing = const SizedBox.shrink();
+        if (node.status == Status.alert) {
+          trailing = const Icon(Icons.circle, color: Colors.red);
+        } else if (node.sensorType == SensorType.energy) {
+          trailing = const Icon(Icons.bolt_rounded, color: Colors.green);
+        }
+
         return ListTile(
-          leading: const Icon(Icons.indeterminate_check_box_outlined),
-          title: Text(node.name),
+          leading: Icon(
+            Icons.check_box_outline_blank,
+            color: colors.primary,
+          ),
+          title: Text(node.name, style: style),
+          trailing: trailing,
         );
       }
 
       late final Icon icon;
       if (node is AssetContainer) {
-        icon = const Icon(Icons.check_box_outline_blank);
+        icon = Icon(
+          Icons.all_inbox_outlined,
+          color: colors.primary,
+        );
       } else {
-        icon = const Icon(Icons.location_on_outlined);
+        icon = Icon(
+          Icons.location_on_outlined,
+          color: colors.primary,
+        );
+      }
+
+      if (node.children.isEmpty) {
+        return ListTile(
+          dense: true,
+          title: Row(children: [icon, Text(node.name, style: style)]),
+        );
       }
 
       return ExpansionTile(
-        title: Row(children: [icon, Text(node.name)]),
+        dense: true,
+        title: Row(children: [icon, Text(node.name, style: style)]),
         controlAffinity: ListTileControlAffinity.leading,
         childrenPadding: const EdgeInsets.only(left: 16),
-        children: _buildTreeViewNodes(node.children),
+        children: _buildTreeViewNodes(node.children, colors),
       );
     }).toList();
   }
