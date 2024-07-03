@@ -31,6 +31,7 @@ class _CompanyWidgetState extends State<CompanyWidget> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 32),
       child: InkWell(
+        onTap: widget.onTap,
         child: Container(
           height: 78,
           decoration: BoxDecoration(
