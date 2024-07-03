@@ -14,6 +14,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bindings = MainBindings();
+
     return GetMaterialApp(
       title: 'Tractian Challenge',
       theme: ThemeData(
@@ -25,7 +27,12 @@ class MyApp extends StatelessWidget {
         GetPage(
           name: '/home',
           page: () => const HomeScreen(),
-          binding: MainBindings(),
+          binding: bindings,
+        ),
+        GetPage(
+          name: '/assets',
+          page: () => const AssetsScreen(),
+          binding: bindings,
         ),
       ],
       // initialBinding: ,
