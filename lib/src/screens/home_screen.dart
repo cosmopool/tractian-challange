@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../controller.dart';
-import '../widgets/company_widget.dart';
-import '../widgets/dialog.dart';
+import '../screens/widgets/company_widget.dart';
+import '../screens/widgets/dialog.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -45,7 +45,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
         return CompanyWidget(
           company: company,
-          onTap: () {},
+          onTap: () => Get.toNamed('/assets', arguments: company),
+          // onTap: () => Get.to(const AssetsScreen()),
         );
       },
     );

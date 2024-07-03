@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 
-import '../controller.dart';
-import '../repository.dart';
+import 'controller.dart';
+import 'repository.dart';
 
 class MainBindings extends Bindings {
   MainBindings([this.dio]);

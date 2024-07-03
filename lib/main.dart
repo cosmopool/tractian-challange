@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'src/home_screen/bindings.dart';
-import 'src/home_screen/home_screen.dart';
+import 'src/bindings.dart';
+import 'src/screens/assets_screen.dart';
+import 'src/screens/home_screen.dart';
 
 void main() {
   runApp(const MyApp());

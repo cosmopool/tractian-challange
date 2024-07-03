@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../entities/company.dart';
+import '../../entities/company.dart';
 
 class CompanyWidget extends StatefulWidget {
   const CompanyWidget({
