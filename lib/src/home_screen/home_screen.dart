@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 
 import '../controller.dart';
 import '../widgets/company_widget.dart';
+import '../widgets/dialog.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -13,9 +14,10 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final controller = Get.find<Controller>();
+
   @override
   void initState() {
-    controller.fetchCompanies();
+    controller.fetchCompanies(onError: showErrorDialog);
     super.initState();
   }
 
