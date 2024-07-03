@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../controller.dart';
+import '../widgets/company_widget.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -37,9 +38,10 @@ class _HomeScreenState extends State<HomeScreen> {
       itemCount: controller.companies.length,
       itemBuilder: (_, i) {
         final company = controller.companies[i];
-        return ListTile(
-          title: Text(company.name),
-          subtitle: Text(company.id),
+
+        return CompanyWidget(
+          company: company,
+          onTap: () {},
         );
       },
     );
