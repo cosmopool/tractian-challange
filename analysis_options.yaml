@@ -12,4 +12,4 @@ linter:
     unnecessary_late: true
     unnecessary_getters_setters: true
     require_trailing_commas: true
-    always_use_package_imports: true
+    prefer_relative_imports: true
