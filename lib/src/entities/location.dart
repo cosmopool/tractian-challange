@@ -1,27 +1,20 @@
-import 'asset.dart';
+import '../core/constants.dart';
+import 'node.dart';
 
-class Location {
+class Location extends TreeNode {
   Location({
-    required this.id,
-    required this.name,
-    this.parentId,
-    this.children = const [],
-    this.assets = const [],
+    required super.id,
+    required super.name,
+    required super.children,
+    super.parentId,
   });
-
-  final String id;
-  final String name;
-  final String? parentId;
-  final List<Location> children;
-  final List<Asset> assets;
 
   static fromJson(Map<String, dynamic> data) {
     return Location(
-      id: data['id'],
-      name: data['name'],
-      parentId: data['parentId'] ?? '',
-      children: [],
-      assets: [],
+      id: data[kId],
+      name: data[kName],
+      parentId: data[kParentId],
+      children: {},
     );
   }
 }

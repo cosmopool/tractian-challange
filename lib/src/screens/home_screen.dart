@@ -41,7 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return ListView.builder(
       itemCount: controller.companies.length,
       itemBuilder: (_, i) {
-        final company = controller.companies[i];
+        final company = controller.companies.toList()[i];
 
         return CompanyWidget(
           company: company,
